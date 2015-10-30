@@ -1,0 +1,26 @@
+<?php	return array (
+  'SP_MAIL_ADDRESS' => 'xxg3053@163.com',
+  'SP_MAIL_SENDER' => 'kenfo',
+  'SP_MAIL_SMTP' => 'smtp.163.com',
+  'SP_MAIL_SMTP_PORT' => '25',
+  'SP_MAIL_LOGINNAME' => 'xxg3053@163.com',
+  'SP_MAIL_PASSWORD' => 'kenfo0326.',
+  'SP_DEFAULT_THEME' => 'simplebootx',
+  'DEFAULT_THEME' => 'simplebootx',
+  'SP_ADMIN_STYLE' => 'flat',
+  'URL_MODEL' => '1',
+  'URL_HTML_SUFFIX' => '.html',
+  'UCENTER_ENABLED' => 0,
+  'COMMENT_NEED_CHECK' => 0,
+  'COMMENT_TIME_INTERVAL' => 60,
+  'MOBILE_TPL_ENABLED' => 0,
+  'HTML_CACHE_ON' => false,
+  'FILE_UPLOAD_TYPE' => 'Qiniu',
+  'UPLOAD_TYPE_CONFIG' => 
+  array (
+    'accessKey' => 'yF_MwmT6viaNaHXHDHFANhv2kTQJLNSD5-TUEbyA',
+    'secrectKey' => 'erNzpDpAtl4JeTBRAht92GlZ45e-WvdL7wdnkTf5',
+    'domain' => '7xky7l.com1.z0.glb.clouddn.com',
+    'bucket' => 'kenfo',
+  ),
+);?>
