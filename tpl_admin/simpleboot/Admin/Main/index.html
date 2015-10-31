@@ -18,7 +18,7 @@ list-style: none;
   <h4 class="well">系统通知</h4>
   <div class="home_info">
     <ul  id="thinkcmf_notices">
-    	<li><img src="__TMPL__assets/images/loading.gif"  style="vertical-align: middle;"/><span style="display:inline-block;vertical-align: middle;">加载中...</span></li>
+    	<li><em>系统消息</em><span>NOTHING!</span></li>
     </ul>
   </div>
   <h4 class="well">系统信息</h4>
@@ -29,48 +29,15 @@ list-style: none;
       </volist>
     </ul>
   </div>
-  <h4 class="well">发起团队</h4>
+  <h4 class="well">运营</h4>
   <div class="home_info" id="home_devteam">
     <ul>
-      <li> <em>ThinkCMF团队</em> <span>www.thinkcmf.com</span> </li>
-      <li> <em>团队成员</em> <span>Dean,Sam,Tuolaji,Smile,Codefans,睡不醒的猪,Jack,日本那只猫</span> </li>
-      <li> <em>联系邮箱</em> <span>cmf@simplewind.net</span> </li>
-    </ul>
-  </div>
-  <h4 class="well">贡献者</h4>
-  <div class="" >
-    <ul class="inline" style="margin-left: 25px;">
-      <li>Kin Ho</li>
-      <li>Powerless</li>
-      <li>Jess</li>
-      <li>木兰情</li>
-      <li>Labulaka</li>
-      <li>WelKinVan</li>
-      <li>Jeson</li>
-      <li>Yim</li>
-      <li>Jamlee</li>
+      <li> <em>地址</em> <span><a target="_blank" href="http://104.131.144.192/">http://104.131.144.192/</a></span> </li>
+      <li> <em>人员</em> <span>kenfo</span> </li>
+      <li> <em>联系邮箱</em> <span>xxg3053@qq.com</span> </li>
     </ul>
   </div>
 </div>
-<script src="__ROOT__/statics/js/common.js"></script> 
-<script>
-//获取官方通知
-$.getJSON("http://www.thinkcmf.com/service/sms_jsonp.php?callback=?",function(data){
-	var tpl='<li><em class="title"></em><span class="content"></span></li>';
-	var $thinkcmf_notices=$("#thinkcmf_notices");
-	$thinkcmf_notices.empty();
-	if(data.length>0){
-		$.each(data,function(i,n){
-			var $tpl=$(tpl);
-			$(".title",$tpl).html(n.title);
-			$(".content",$tpl).html(n.content);
-			$thinkcmf_notices.append($tpl);
-		});
-	}else{
-		$thinkcmf_notices.append("<li>^_^,没有通知~~</li>");
-	}
-	
-});
-</script>
+<script src="__ROOT__/statics/js/common.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ if(file_exists("data/conf/route/portal.php")){
 
 $runtime_home_config= array();
 $configs= array(
-		'TAGLIB_BUILD_IN' => THINKCMF_CORE_TAGLIBS.',Portal\Lib\Taglib\Portal',
+		'TAGLIB_BUILD_IN' => SYS_CORE_TAGLIBS.',Portal\Lib\Taglib\Portal',
 		'TMPL_EXCEPTION_FILE'   => SPSTATIC.'exception.html',// 异常页面的模板文件
 		'TMPL_TEMPLATE_SUFFIX'  => '.html',     // 默认模板文件后缀
  		'TMPL_FILE_DEPR'        =>  '/', //模板文件MODULE_NAME与ACTION_NAME之间的分割符

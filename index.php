@@ -2,7 +2,7 @@
 
 /**
  * 项目入口文件
- * Some rights reserved：www.simplewind.net
+ * Some rights reserved：kenfo
  */
 if (ini_get('magic_quotes_gpc')) {
 	function stripslashesRecursive(array $array){
@@ -35,9 +35,9 @@ define("RUNTIME_PATH", SITE_PATH . "/data/runtime/");
 //静态缓存目录
 define("HTML_PATH", SITE_PATH . "/data/runtime/Html/");
 //版本号
-define("SIMPLEWIND_CMF_VERSION", 'X1.6.1');
+define("SYS_VERSION", '1.0.0');
 
-define("THINKCMF_CORE_TAGLIBS", 'cx,Common\Lib\Taglib\TagLibSpadmin,Common\Lib\Taglib\TagLibHome');
+define("SYS_CORE_TAGLIBS", 'cx,Common\Lib\Taglib\TagLibSpadmin,Common\Lib\Taglib\TagLibHome');
 
 if(function_exists('saeAutoLoader') || isset($_SERVER['HTTP_BAE_ENV_APPID'])){
 	

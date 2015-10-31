@@ -21,7 +21,7 @@ date_default_timezone_set('PRC');
 error_reporting(E_ALL & ~E_NOTICE);
 header('Content-Type: text/html; charset=UTF-8');
 define('SITEDIR', _dir_path(substr(dirname(__FILE__), 0, -8)));
-define("SIMPLEWIND_CMF_VERSION", '20131111');
+define("SYS_VERSION", '20131111');
 
 //数据库
 $sqlFile = 'spcmf.sql';
