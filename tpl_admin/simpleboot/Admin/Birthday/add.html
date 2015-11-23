@@ -18,13 +18,14 @@
 					<div class="control-group">
 						<label class="control-label">生日:</label>
 						<div class="controls">
-							<input type="password" class="input" name="user_birthday" value="">
+							<input type="text" class="input J_date" name="user_birthday" value="" autocomplete="off">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">阴阳历</label>
 						<div class="controls">
-							<input type="password" class="input" name="user_solar" value="">
+							<input type="radio" name="user_solar" value="0"> 阳历
+		                    <input type="radio" name="user_solar" value="1"> 阴历  
 						</div>
 					</div>
 					<div class="control-group">
@@ -42,7 +43,8 @@
 					<div class="control-group">
 						<label class="control-label">提醒:</label>
 						<div class="controls">
-							<input type="text" class="input" name="user_remind" value="">
+							<input type="radio" name="user_remind" value="0"> 是
+		                    <input type="radio" name="user_remind" value="1"> 否 
 						</div>
 					</div>
 				</fieldset>
