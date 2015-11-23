@@ -3,14 +3,19 @@
 <body class="J_scroll_fixed">
 	<div class="wrap J_check_wrap">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="{:U('user/index')}">生日管理</a></li>
-			<li><a href="{:U('user/add')}">添加生日</a></li>
+			<li class="active"><a href="{:U('birthday/index')}">生日管理</a></li>
+			<li><a href="{:U('birthday/add')}">添加生日</a></li>
 		</ul>
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
 					<th width="50">ID</th>
 					<th>用户名</th>
+					<th>生日</th>
+					<th>阴阳历</th>
+					<th>邮箱</th>
+					<th>电话</th>
+					<th>是否提醒</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -18,6 +23,11 @@
 				<tr>
 					<td>{$vo.id}</td>
 					<td>{$vo.user_name}</td>
+					<td>{$vo.user_birthday}</td>
+					<td>{$vo.user_solar}</td>
+					<td>{$vo.user_email}</td>
+					<td>{$vo.user_tel}</td>
+					<td>{$vo.user_remind}</td>
 				</tr>
 				</foreach>
 			</tbody>
