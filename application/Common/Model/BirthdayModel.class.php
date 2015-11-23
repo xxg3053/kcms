@@ -8,6 +8,14 @@ class BirthdayModel extends CommonModel{
 			array('user_name', 'require', '姓名不能为空！', 1, 'regex', CommonModel:: MODEL_BOTH )
 	);
 	
+	protected $_auto = array(
+			array('create_time','mDate',1,'callback'), // 对msg字段在新增的时候回调htmlspecialchars方法
+	);
+	
+	function mDate(){
+		return date("Y-m-d H:i:s");
+	}
+
 	protected function _before_write(&$data) {
 		parent::_before_write($data);
 	}
