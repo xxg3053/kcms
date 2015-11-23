@@ -1,0 +1,29 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('user/index')}">生日管理</a></li>
+			<li><a href="{:U('user/add')}">添加生日</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>用户名</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="birthdays" item="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.user_name}</td>
+				</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>
