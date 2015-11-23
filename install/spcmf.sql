@@ -519,7 +519,7 @@ CREATE TABLE `sp_user_favorites` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 
-CREATE TABLE `sp_user_birthday` (
+CREATE TABLE `sp_birthday` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(48) DEFAULT NULL COMMENT '用户姓名',
   `user_birthday` date DEFAULT NULL COMMENT '生日',
@@ -527,7 +527,7 @@ CREATE TABLE `sp_user_birthday` (
   `user_email` varchar(30) DEFAULT NULL COMMENT '邮箱',
   `user_tel` varchar(30) DEFAULT NULL COMMENT '电话',
   `user_remind` varchar(3) DEFAULT '0' COMMENT '0提醒；1不提醒',
-  `createtime` int(11) DEFAULT NULL,
+  `create_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 -- --------------------------------------------------------
