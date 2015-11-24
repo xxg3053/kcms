@@ -20,7 +20,6 @@ class IndexController extends Controller{
             
             /* 加载微信SDK */
             $wechat = new Wechat($token, $appid, $crypt);
-            
             /* 获取请求信息 */
             $data = $wechat->request();
 
