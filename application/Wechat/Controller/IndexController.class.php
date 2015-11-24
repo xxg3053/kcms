@@ -12,6 +12,7 @@ class IndexController extends Controller{
      * 所以，微信公众平台后台填写的api地址则为该操作的访问地址
      */
     public function index($id = ''){
+        exit($_GET['echostr']);
         //调试
         try{
             $appid = 'wx74d59fbce4fde733'; //AppID(应用ID)
