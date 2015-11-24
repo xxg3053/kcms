@@ -1,5 +1,5 @@
 <?php
-namespace Webchat\Controller;
+namespace Wechat\Controller;
 
 use Think\Controller;
 use Com\Wechat;
