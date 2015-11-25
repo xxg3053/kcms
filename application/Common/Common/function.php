@@ -1597,3 +1597,16 @@ function sp_template_file_exists($file){
     }
     
 }
+
+
+function birthday_difference_now($birthday=''){
+	if($birthday == ''){
+		return '-9999';
+	}
+	$bd = date("m-d",strtotime($birthday));
+	$nbd = date("Y").'-'.$bd;
+	$time = date("Y-m-d");
+	$c = strtotime($nbd) - strtotime($time);
+	$day = ceil($c/3600/24);
+	return $day;
+}

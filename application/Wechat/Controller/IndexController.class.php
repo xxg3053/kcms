@@ -100,7 +100,7 @@ class IndexController extends Controller{
             case Wechat::MSG_TYPE_EVENT:
                 switch ($data['Event']) {
                     case Wechat::MSG_EVENT_SUBSCRIBE:
-                        $wechat->replyText('欢迎您关注麦当苗儿公众平台！回复“文本”，“图片”，“语音”，“视频”，“音乐”，“图文”，“多图文”查看相应的信息！');
+                        $wechat->replyText('欢迎您关注公众平台！回复“文本”，“图片”，“语音”，“视频”，“音乐”，“图文”，“多图文”查看相应的信息！');
                         break;
 
                     case Wechat::MSG_EVENT_UNSUBSCRIBE:
@@ -166,14 +166,25 @@ class IndexController extends Controller{
                             "http://yun.topthink.com/Uploads/Editor/2015-07-30/55b991cad4c48.jpg"
                         ); //回复单条图文消息
 
-                        $wechat->replyNews($news, $news, $news, $news, $news);
+                        $wechat->replyNews($news, $news, $news, $news, $news,$news,$news,$news,$news);
                         break;
                     case '生日':
+                    case '/:cake':
                     $this->birthday_model = D("Common/Birthday");
                     $birthdays = $this->birthday_model
                                 ->order("create_time DESC")
                                 ->select();
-                    $wechat->replyText(json_encode($birthdays));
+                    $count=count($birthdays);
+                    $str = '';
+                    for($i = 0; $i < $count; $i++) {
+                        $name = $birthdays[$i]['user_name'];
+                        $birthday = $birthdays[$i]['user_birthday'];
+                        $d = birthday_difference_now($birthday);
+                        if($d >= 0){
+                            $str .= $name."/:cake".$birthday."还差".$d."天/:gift\n\n";
+                        }
+                    }
+                    $wechat->replyText($str);
                     break;
                     default:
                         $wechat->replyText("欢迎访问公众平台！您输入的内容是：{$data['Content']}");
