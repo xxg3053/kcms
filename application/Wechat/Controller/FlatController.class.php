@@ -31,9 +31,11 @@ class FlatController extends AdminbaseController{
             session(array('expire' => $token['expires_in']));
             session("token", $token['access_token']);
         }
-
+        //获取组
         $group = $auth->groupsGet();
         print_r($group);
+        //发送邮件
+        sp_send_email('xxg3053@qq.com','KCMS生日提醒','aaa');
 		$this->assign("page", $page->show());
 		$this->assign("flats",$flats);
 		$this->display();
