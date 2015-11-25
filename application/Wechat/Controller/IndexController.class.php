@@ -169,7 +169,13 @@ class IndexController extends Controller{
 
                         $wechat->replyNews($news, $news, $news, $news, $news);
                         break;
-                    
+                    case '生日':
+                    $this->birthday_model = D("Common/Birthday");
+                    $birthdays = $this->birthday_model
+                                ->order("create_time DESC")
+                                ->select();
+                    $wechat->replyText(json_encode($birthdays));
+                    break;
                     default:
                         $wechat->replyText("欢迎访问公众平台！您输入的内容是：{$data['Content']}");
                         break;
