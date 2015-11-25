@@ -530,6 +530,28 @@ CREATE TABLE `sp_birthday` (
   `create_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE `sp_wechat_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wt_ToUserName` varchar(200) DEFAULT NULL COMMENT '接收人id',
+  `wt_FromUserName` varchar(200) DEFAULT NULL COMMENT '发送人id',
+  `wt_CreateTime` int(11) DEFAULT NULL COMMENT '发送时间',
+  `wt_MsgType` varchar(30) DEFAULT NULL COMMENT '消息类型',
+  `wt_Content` varchar(255) DEFAULT NULL COMMENT '内容',
+  `wt_MsgId` varchar(100) DEFAULT NULL COMMENT '消息id',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE `sp_wechat_flat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wt_name` varchar(48) DEFAULT NULL COMMENT '公众平台名称',
+  `wt_appid` varchar(200) DEFAULT NULL COMMENT '公众平台appid',
+  `wt_appsecret` varchar(200) DEFAULT NULL COMMENT 'appsecret',
+  `wt_token` varchar(200) DEFAULT NULL COMMENT 'token',
+  `wt_crypt` varchar(200) DEFAULT NULL COMMENT 'crypt',
+  `wt_use` varchar(200) DEFAULT '0' COMMENT '是否启动 1启动',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 -- --------------------------------------------------------
 
 INSERT INTO `sp_auth_rule` VALUES(1, 'Admin', 'admin_url', 'admin/content/default', NULL, '内容管理', 1, '');

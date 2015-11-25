@@ -5,9 +5,10 @@
  */
 return array(
     'DB_TYPE' => 'mysql',
-    'DB_HOST' => '104.131.144.192',
+    //'DB_HOST' => '104.131.144.192',
+    'DB_HOST' => '127.0.0.1',
     'DB_NAME' => 'kcms',
-    'DB_USER' => 'xxg3053',
+    'DB_USER' => 'root',
     'DB_PWD' => 'xxg111063053',
     'DB_PORT' => '3306',
     'DB_PREFIX' => 'kcms_',

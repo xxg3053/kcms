@@ -1,0 +1,39 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('flat/index')}">平台管理</a></li>
+			<li><a href="{:U('flat/add')}">添加平台</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>接收人ID</th>
+					<th>发送人ID</th>
+					<th>消息ID</th>
+					<th>消息类型</th>
+					<th>内容</th>
+					<th>发送时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="messages" item="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.wt_tousername}</td>
+					<td>{$vo.wt_fromusername}</td>
+					<td>{$vo.wt_msgid}</td>
+					<td>{$vo.wt_msgtype}</td>
+					<td>{$vo.wt_content}</td>
+					<td>{$vo.wt_createtime}</td>
+				</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

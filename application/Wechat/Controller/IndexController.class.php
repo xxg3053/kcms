@@ -12,7 +12,7 @@ class IndexController extends Controller{
      * 所以，微信公众平台后台填写的api地址则为该操作的访问地址
      */
     public function index($id = ''){
-        exit($_GET['echostr']);
+        //exit($_GET['echostr']);
         //调试
         try{
             $appid = 'wx74d59fbce4fde733'; //AppID(应用ID)
@@ -48,8 +48,8 @@ class IndexController extends Controller{
                  */
 
                 //记录微信推送过来的数据
-                file_put_contents('./data.json', json_encode($data));
-
+                //file_put_contents('./data.json', json_encode($data));
+                 $this->saveMessage($data);
                 /* 响应当前请求(自动回复) */
                 //$wechat->response($content, $type);
 
@@ -67,21 +67,36 @@ class IndexController extends Controller{
                  * 
                  */
                 
-                //执行Demo
-                $this->demo($wechat, $data);
+                //response
+                $this->response($wechat, $data);
             }
         } catch(\Exception $e){
             file_put_contents('./error.json', json_encode($e->getMessage()));
         }
         
     }
-
+    private function saveMessage($data){
+        $temp['wt_ToUserName'] = $data['ToUserName'];
+        $temp['wt_FromUserName'] = $data['FromUserName'];
+        $temp['wt_CreateTime'] = $data['CreateTime'];
+        $temp['wt_MsgType'] = $data['MsgType'];
+        $temp['wt_Content'] = $data['Content'];
+        $temp['wt_MsgId'] = $data['MsgId'];
+        $this->WechatMessage_model = D("Common/WechatMessage");
+        if($this->WechatMessage_model->create($temp)){
+            if($this->WechatMessage_model->add()!==false){
+                file_put_contents('./error.json', '保存成功');
+            }else{
+                file_put_contents('./error.json', '保存失败');
+            }
+        }
+    }
     /**
      * DEMO
      * @param  Object $wechat Wechat对象
      * @param  array  $data   接受到微信推送的消息
      */
-    private function demo($wechat, $data){
+    private function response($wechat, $data){
         switch ($data['MsgType']) {
             case Wechat::MSG_TYPE_EVENT:
                 switch ($data['Event']) {
@@ -94,7 +109,7 @@ class IndexController extends Controller{
                         break;
 
                     default:
-                        $wechat->replyText("欢迎访问麦当苗儿公众平台！您的事件类型：{$data['Event']}，EventKey：{$data['EventKey']}");
+                        $wechat->replyText("欢迎访问公众平台！您的事件类型：{$data['Event']}，EventKey：{$data['EventKey']}");
                         break;
                 }
                 break;
@@ -102,7 +117,7 @@ class IndexController extends Controller{
             case Wechat::MSG_TYPE_TEXT:
                 switch ($data['Content']) {
                     case '文本':
-                        $wechat->replyText('欢迎访问麦当苗儿公众平台，这是文本回复的内容！');
+                        $wechat->replyText('欢迎访问公众平台，这是文本回复的内容！');
                         break;
 
                     case '图片':
@@ -156,7 +171,7 @@ class IndexController extends Controller{
                         break;
                     
                     default:
-                        $wechat->replyText("欢迎访问麦当苗儿公众平台！您输入的内容是：{$data['Content']}");
+                        $wechat->replyText("欢迎访问公众平台！您输入的内容是：{$data['Content']}");
                         break;
                 }
                 break;
