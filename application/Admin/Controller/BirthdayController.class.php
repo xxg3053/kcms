@@ -12,7 +12,7 @@ class BirthdayController extends AdminbaseController{
 		$count=$this->birthday_model->count();
 		$page = $this->page($count, 20);
 		$birthdays = $this->birthday_model
-		->order("create_time DESC")
+		->order("id ASC")
 		->limit($page->firstRow . ',' . $page->listRows)
 		->select();
 
