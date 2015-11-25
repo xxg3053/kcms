@@ -42,6 +42,24 @@ class BirthdayController extends AdminbaseController{
 			
 		}
 	}
+
+	function checkBirthday(){
+		$birthdays = $this->birthday_model->select();
+		$count=count($birthdays);
+		for($i = 0; $i <= $count; $i++) {
+			$bd = $birthdays[$i]['user_birthday'];
+			$name = $birthdays[$i]['user_name'];
+			$a=strtotime(date("Y-m-d"));
+			$b=strtotime($bd);
+			$c=$a-$b;
+			$d=ceil($c/3600/24);
+			if($d > 1 && $d < 4){
+				sp_send_email('xxg3053@qq.com','KCMS生日提醒','您的好友'.$name.'生日是'.$bd.',还有'.$d.'天就到了哦！赶紧祝福吧！！');
+			}
+			
+		}
+		$this->success('检查成功！');
+	}
 	
 
 

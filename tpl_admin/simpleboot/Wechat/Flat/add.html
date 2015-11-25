@@ -1,0 +1,60 @@
+<admintpl file="header" />
+</head>
+<body class="J_scroll_fixed">
+	<div class="wrap jj">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('flat/index')}">平台管理</a></li>
+			<li class="active"><a href="{:U('flat/add')}">添加平台</a></li>
+		</ul>
+		<div class="common-form">
+			<form method="post" class="form-horizontal J_ajaxForm" action="{:U('flat/add_post')}">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">微信平台名称:</label>
+						<div class="controls">
+							<input type="text" class="input" name="wt_name" value="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">APPID:</label>
+						<div class="controls">
+							<input type="text" class="input" name="wt_appid" value="" autocomplete="off">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">AppSecret</label>
+						<div class="controls">
+							<input type="text" class="input" name="wt_appsecret" value="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">TOKEN:</label>
+						<div class="controls">
+							<input type="text" class="input" name="wt_token" value="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">crypt:</label>
+						<div class="controls">
+							<input type="text" class="input" name="wt_crypt" value="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">是否启用:</label>
+						<div class="controls">
+							<input type="radio" name="wt_use" value="0"> 否
+		                    <input type="radio" name="wt_use" value="1"> 是
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<button type="submit"
+						class="btn btn-primary btn_submit J_ajax_submit_btn">添加</button>
+					<a class="btn" href="__URL__">返回</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

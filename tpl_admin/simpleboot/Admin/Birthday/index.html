@@ -6,32 +6,49 @@
 			<li class="active"><a href="{:U('birthday/index')}">生日管理</a></li>
 			<li><a href="{:U('birthday/add')}">添加生日</a></li>
 		</ul>
-		<table class="table table-hover table-bordered">
-			<thead>
-				<tr>
-					<th width="50">ID</th>
-					<th>用户名</th>
-					<th>生日</th>
-					<th>阴阳历</th>
-					<th>邮箱</th>
-					<th>电话</th>
-					<th>是否提醒</th>
-				</tr>
-			</thead>
-			<tbody>
-				<foreach name="birthdays" item="vo">
-				<tr>
-					<td>{$vo.id}</td>
-					<td>{$vo.user_name}</td>
-					<td>{$vo.user_birthday}</td>
-					<td>{$vo.user_solar}</td>
-					<td>{$vo.user_email}</td>
-					<td>{$vo.user_tel}</td>
-					<td>{$vo.user_remind}</td>
-				</tr>
-				</foreach>
-			</tbody>
-		</table>
+		<div class="common-form">
+			<div class="table-actions">
+					<a class="btn btn-primary btn-small J_ajax_dialog_btn" href="{:u('birthday/checkBirthday')}">检测</a>
+			</div>
+			<php> 
+			$status=array("1"=>"提醒","0"=>"不提醒"); 
+			$solar=array("1"=>"阴历","0"=>"阳历"); 
+			</php>
+			<table width="100%" class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>用户名</th>
+						<th>生日</th>
+						<th>阴阳历</th>
+						<th>邮箱</th>
+						<th>电话</th>
+						<th>是否提醒</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="birthdays" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.user_name}</td>
+						<td>{$vo.user_birthday}</td>
+						<td>{$solar[$vo['user_solar']]}</td>
+						<td>{$vo.user_email}</td>
+						<td>{$vo.user_tel}</td>
+						<td>{$status[$vo['user_remind']]}</td>
+						<td>
+							<a href="">修改</a>|
+							<a href="">删除</a>|
+							<a href="">发送邮件</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+
+		</div>
+		
 		<div class="pagination">{$page}</div>
 	</div>
 	<script src="__ROOT__/statics/js/common.js"></script>

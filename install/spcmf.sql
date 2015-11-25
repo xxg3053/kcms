@@ -526,7 +526,7 @@ CREATE TABLE `sp_birthday` (
   `user_solar` varchar(3) DEFAULT '0' COMMENT '0阳历；1阴历',
   `user_email` varchar(30) DEFAULT NULL COMMENT '邮箱',
   `user_tel` varchar(30) DEFAULT NULL COMMENT '电话',
-  `user_remind` varchar(3) DEFAULT '0' COMMENT '0提醒；1不提醒',
+  `user_remind` varchar(3) DEFAULT '0' COMMENT '1提醒；0不提醒',
   `create_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

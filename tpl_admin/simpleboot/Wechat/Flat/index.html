@@ -6,28 +6,31 @@
 			<li class="active"><a href="{:U('flat/index')}">平台管理</a></li>
 			<li><a href="{:U('flat/add')}">添加平台</a></li>
 		</ul>
-		<table class="table table-hover table-bordered">
+		<php> $status=array("1"=>"启用","0"=>"停用"); </php>
+		<table width="100%" class="table table-hover table-bordered">
 			<thead>
 				<tr>
 					<th width="50">ID</th>
-					<th>接收人ID</th>
-					<th>发送人ID</th>
-					<th>消息ID</th>
-					<th>消息类型</th>
-					<th>内容</th>
-					<th>发送时间</th>
+					<th>微信平台名称</th>
+					<th>APPID</th>
+					<th>AppSecret</th>
+					<th>TOKEN</th>
+					<th>crypt</th>
+					<th>是否启用</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<foreach name="messages" item="vo">
+				<foreach name="flats" item="vo">
 				<tr>
 					<td>{$vo.id}</td>
-					<td>{$vo.wt_tousername}</td>
-					<td>{$vo.wt_fromusername}</td>
-					<td>{$vo.wt_msgid}</td>
-					<td>{$vo.wt_msgtype}</td>
-					<td>{$vo.wt_content}</td>
-					<td>{$vo.wt_createtime}</td>
+					<td>{$vo.wt_name}</td>
+					<td>{$vo.wt_appid}</td>
+					<td>{$vo.wt_appsecret}</td>
+					<td>{$vo.wt_token}</td>
+					<td>{$vo.wt_crypt}</td>
+					<td>{$status[$vo['wt_use']]}</td>
+					<td><a href="#">启用</a> <a href="">修改</a> <a href="">删除</a></td>
 				</tr>
 				</foreach>
 			</tbody>
