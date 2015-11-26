@@ -12,11 +12,15 @@ class IndexController extends Controller{
      * 所以，微信公众平台后台填写的api地址则为该操作的访问地址
      */
     public function index($id = ''){
+         $this->flat_model = D("Common/WechatFlat");
+         $this->flat = $this->flat_model
+                          ->where("wt_use=1")
+                          ->find();
         //调试
         try{
-            $appid = 'wx74d59fbce4fde733'; //AppID(应用ID)
-            $token = 'KENFOWEIXIN'; //微信后台填写的TOKEN
-            $crypt = '0dgy8Ry4aEjD0b4M0NbVlZAjZ2sB8YX4zaZBnritvI8'; //消息加密KEY（EncodingAESKey）
+            $appid = $this->flat['wt_appid']; //AppID(应用ID)
+            $token = $this->flat['wt_token']; //微信后台填写的TOKEN
+            $crypt = $this->flat['wt_crypt']; //消息加密KEY（EncodingAESKey）
             
             /* 加载微信SDK */
             $wechat = new Wechat($token, $appid, $crypt);
@@ -204,8 +208,8 @@ class IndexController extends Controller{
      * @return string       媒体资源ID
      */
     private function upload($type){
-        $appid     = 'wx74d59fbce4fde733';
-        $appsecret = '0d124c35cc812c85e4e1a0f00abb2fd3';
+        $appid     = $this->flat['wt_appid'];
+        $appsecret = $this->flat['wt_appsecret'];
 
         $token = session("token");
 

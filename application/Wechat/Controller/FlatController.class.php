@@ -18,23 +18,6 @@ class FlatController extends AdminbaseController{
 		->order("id DESC")
 		->limit($page->firstRow . ',' . $page->listRows)
 		->select();
-
-		// $appid     = 'wx74d59fbce4fde733';
-  //       $appsecret = '0d124c35cc812c85e4e1a0f00abb2fd3';
-
-  //       $token = session("token");
-  //       if($token){
-  //           $auth = new WechatAuth($appid, $appsecret, $token);
-  //       } else {
-  //           $auth  = new WechatAuth($appid, $appsecret);
-  //           $token = $auth->getAccessToken();
-  //           session(array('expire' => $token['expires_in']));
-  //           session("token", $token['access_token']);
-  //       }
-        //获取组
-        // $group = $auth->groupsGet();
-        // print_r($group);
-       
 		$this->assign("page", $page->show());
 		$this->assign("flats",$flats);
 		$this->display();
@@ -61,7 +44,74 @@ class FlatController extends AdminbaseController{
 			
 		}
 	}
+	function edit(){
+		$id=I("get.id");
+		$ad=$this->flat_model->where("id=$id")->find();
+		$this->assign($ad);
+		$this->display();
+	}
+	function edit_post(){
+		if (IS_POST) {
+			if ($this->flat_model->create()) {
+				if ($this->flat_model->save()!==false) {
+					$this->success("保存成功！", U("flat/index"));
+				} else {
+					$this->error("保存失败！");
+				}
+			} else {
+				$this->error($this->flat_model->getError());
+			}
+		}
+	}
 	
+	/**
+	 *  删除
+	 */
+	function delete(){
+		$id = I("get.id",0,"intval");
+		if ($this->flat_model->delete($id)!==false) {
+			$this->success("删除成功！");
+		} else {
+			$this->error("删除失败！");
+		}
+	}
+	/**
+	 * 启用
+	 * @Author   KENFO
+	 * @Email    xxg3053@qq.com
+	 * @DateTime 2015-11-26T21:05:41+0800
+	 * @Describe
+	 * @return   [type]                   [description]
+	 */
+	function startup(){
+		$id=I("get.id");
+		$data['wt_use']=1;
+		if ($this->flat_model->where("id = $id")->save($data)!==false) {
+			$data2['wt_use']=0;
+			if ($this->flat_model->where("id != $id")->save($data2)!==false) {
+				$this->success("启用成功！");
+			}else{
+				$this->error("启用失败！");
+			}
+			
+		} else {
+			$this->error("启用失败！");
+		}
+	}
 
+
+	function detail(){
+		$id=I("get.id");
+		$flat = $this->flat_model->where("id = $id")->find();
+
+        $appid     = $flat['wt_appid'];
+        $appsecret = $flat['wt_appsecret'];
+
+        $auth  = new WechatAuth($appid, $appsecret);
+        ////获取组
+        $group = $auth->userGet();//groupsGet();
+        $this->assign("group",$group);
+		$this->display();
+	}
 
 }

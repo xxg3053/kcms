@@ -4,52 +4,58 @@
 	<div class="wrap jj">
 		<ul class="nav nav-tabs">
 			<li><a href="{:U('flat/index')}">平台管理</a></li>
-			<li class="active"><a href="{:U('flat/add')}">添加平台</a></li>
+			<li><a href="{:U('flat/add')}">添加平台</a></li>
 		</ul>
 		<div class="common-form">
-			<form method="post" class="form-horizontal J_ajaxForm" action="{:U('flat/add_post')}">
+			<form method="post" class="form-horizontal J_ajaxForm" action="{:U('flat/edit_post')}">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label">微信平台名称:</label>
 						<div class="controls">
-							<input type="text" class="input" name="wt_name" value="">
+							<input type="text" class="input" name="wt_name" value="{$wt_name}"><span class="must_red">*</span>
+							<input type="hidden" class="input" name="id" value="{$id}">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">APPID:</label>
 						<div class="controls">
-							<input type="text" class="input" name="wt_appid" value="" autocomplete="off">
+							<input type="text" class="input" name="wt_appid" value="{$wt_appid}">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">AppSecret</label>
+						<label class="control-label">AppSecret:</label>
 						<div class="controls">
-							<input type="text" class="input" name="wt_appsecret" value="">
+							<input type="text" class="input" name="wt_appsecret" value="{$wt_appsecret}">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">TOKEN:</label>
 						<div class="controls">
-							<input type="text" class="input" name="wt_token" value="">
+							<input type="text" class="input" name="wt_token" value="{$wt_token}">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">crypt:</label>
 						<div class="controls">
-							<input type="text" class="input" name="wt_crypt" value="">
+							<input type="text" class="input" name="wt_crypt" value="{$wt_crypt}">
 						</div>
 					</div>
 					<!-- <div class="control-group">
 						<label class="control-label">是否启用:</label>
 						<div class="controls">
-							<input type="radio" name="wt_use" value="0"> 否
-		                    <input type="radio" name="wt_use" value="1"> 是
+							<php>
+	        				$radio0=' checked'; $radio1='';
+	        				if($wt_use==1){
+	        					$radio0=''; $radio1=' checked';
+	        				}
+	        			</php>
+							<input type="radio" name="wt_use" value="0" {$radio0}> 否
+		                    <input type="radio" name="wt_use" value="1" {$radio1}> 是
 						</div>
 					</div> -->
 				</fieldset>
 				<div class="form-actions">
-					<button type="submit"
-						class="btn btn-primary btn_submit J_ajax_submit_btn">添加</button>
+					<button type="submit" class="btn btn-primary btn_submit J_ajax_submit_btn">更新</button>
 					<a class="btn" href="__URL__">返回</a>
 				</div>
 			</form>
