@@ -1599,14 +1599,15 @@ function sp_template_file_exists($file){
 }
 
 
-function birthday_difference_now($birthday=''){
-	if($birthday == ''){
+function date_difference_days($date1='',$date2=''){
+	if($date1 == ''){
 		return '-9999';
 	}
-	$bd = date("m-d",strtotime($birthday));
-	$nbd = date("Y").'-'.$bd;
-	$time = date("Y-m-d");
-	$c = strtotime($nbd) - strtotime($time);
+	$bd1 = date("m-d",strtotime($date1));
+	$bd2 = date("m-d",strtotime($date2));
+	$nbd1 = date("Y").'-'.$bd1;
+	$nbd2 = date("Y").'-'.$bd2;
+	$c = strtotime($nbd1) - strtotime($nbd2);
 	$day = ceil($c/3600/24);
 	return $day;
 }

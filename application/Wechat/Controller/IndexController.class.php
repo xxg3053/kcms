@@ -4,7 +4,7 @@ namespace Wechat\Controller;
 use Think\Controller;
 use Com\Wechat;
 use Com\WechatAuth;
-
+use Common\Lib\Lunar;
 class IndexController extends Controller{
     /**
      * 微信消息接口入口
@@ -174,21 +174,8 @@ class IndexController extends Controller{
                         break;
                     case '生日':
                     case '/:cake':
-                    $this->birthday_model = D("Common/Birthday");
-                    $birthdays = $this->birthday_model
-                                ->order("create_time DESC")
-                                ->select();
-                    $count=count($birthdays);
-                    $str = '';
-                    for($i = 0; $i < $count; $i++) {
-                        $name = $birthdays[$i]['user_name'];
-                        $birthday = $birthdays[$i]['user_birthday'];
-                        $d = birthday_difference_now($birthday);
-                        if($d >= 0){
-                            $str .= $name."/:cake".$birthday."还差".$d."天/:gift\n\n";
-                        }
-                    }
-                    $wechat->replyText($str);
+                        $msg = $this->birthdayRemind();
+                        $wechat->replyText($msg);
                     break;
                     default:
                         $wechat->replyText("欢迎访问公众平台！您输入的内容是：{$data['Content']}");
@@ -255,5 +242,36 @@ class IndexController extends Controller{
         }
 
         return $media['media_id'];
+    }
+
+    private function birthdayRemind(){
+         $this->birthday_model = D("Common/Birthday");
+                $birthdays = $this->birthday_model
+                            ->order("create_time DESC")
+                            ->select();
+        $count=count($birthdays);
+        $str = '';
+        $lunar=new Lunar();
+        for($i = 0; $i < $count; $i++) {
+            $name = $birthdays[$i]['user_name'];
+            $birthday = $birthdays[$i]['user_birthday'];
+            $solar = $birthdays[$i]['user_solar'];
+
+            $d = 0;
+            if($solar==0){
+                $l=$lunar->convertSolarToLunar(date('Y'),date('m'),date('d'));
+                $lmounth = $l[4];
+                $lday = $l[5];
+                $lnow = date('Y').'-'.$lmounth.'-'.$lday;
+                $d = date_difference_days($birthday,date($lnow));
+            }else{
+                $d = date_difference_days($birthday,date('Y-m-d'));
+            }
+            if($d >= 0){
+                $str .= $name."/:cake".$birthday."还差".$d."天/:gift\n\n";
+            }
+        }
+
+        return $str;
     }
 }

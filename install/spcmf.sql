@@ -527,9 +527,13 @@ CREATE TABLE `sp_birthday` (
   `user_email` varchar(30) DEFAULT NULL COMMENT '邮箱',
   `user_tel` varchar(30) DEFAULT NULL COMMENT '电话',
   `user_remind` varchar(3) DEFAULT '0' COMMENT '1提醒；0不提醒',
+  `user_wish` varchar(200) DEFAULT '生日快乐' COMMENT '祝福语',
   `create_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+--
+--alter table `sp_birthday` add `user_wish` varchar(200) DEFAULT '生日快乐' COMMENT '祝福语'
+--
 
 CREATE TABLE `sp_wechat_message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

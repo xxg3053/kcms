@@ -638,7 +638,6 @@ function setCookie(name, value, days) {
 
 //浮出提示_居中
 function resultTip(options) {
-
     var cls = (options.error ? 'warning' : 'success');
     var pop = $('<div style="left:50%;top:30%;" class="pop_showmsg_wrap"><span class="pop_showmsg"><span class="' + cls + '">' + options.msg + '</span></span></div>');
 

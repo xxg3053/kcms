@@ -11,8 +11,9 @@
 					<a class="btn btn-primary btn-small J_ajax_dialog_btn" href="{:u('birthday/checkBirthday')}">检测</a>
 			</div>
 			<php> 
-			$status=array("1"=>"提醒","0"=>"不提醒"); 
-			$solar=array("0"=>"阴历","1"=>"阳历"); 
+				$status=array("1"=>"是","0"=>"否"); 
+				$solar=array("0"=>"阴历","1"=>"阳历"); 
+				$tdcolor=array("1"=>'#e95d4e',"0"=>"#45a1de");
 			</php>
 			<table width="100%" class="table table-hover table-bordered">
 				<thead>
@@ -24,6 +25,7 @@
 						<th>邮箱</th>
 						<th>电话</th>
 						<th>是否提醒</th>
+						<th>祝福语</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -33,14 +35,15 @@
 						<td>{$vo.id}</td>
 						<td>{$vo.user_name}</td>
 						<td>{$vo.user_birthday}</td>
-						<td>{$solar[$vo['user_solar']]}</td>
+						<td style="color:{$tdcolor[$vo['user_solar']]}">{$solar[$vo['user_solar']]}</td>
 						<td>{$vo.user_email}</td>
 						<td>{$vo.user_tel}</td>
 						<td>{$status[$vo['user_remind']]}</td>
+						<td>{$vo.user_wish}</td>
 						<td>
 							<a href="{:U('birthday/edit',array('id'=>$vo['id']))}">修改</a>|
 							<a href="{:U('birthday/delete',array('id'=>$vo['id']))}" class="J_ajax_del">删除</a>|
-							<a href="">发送邮件</a>
+							<a href="#">发送邮件</a>
 						</td>
 					</tr>
 					</foreach>

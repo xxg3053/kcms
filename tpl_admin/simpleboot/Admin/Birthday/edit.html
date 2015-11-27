@@ -52,12 +52,18 @@
 						<div class="controls">
 							<php>
 		        				$radio0=''; $radio1=' checked';
-		        				if($user_solar==0){
+		        				if($user_remind==0){
 		        					$radio0=' checked'; $radio1='';
 		        				}
 		        			</php>
 							<input type="radio" name="user_remind" value="1" {$radio1}> 是
 		                    <input type="radio" name="user_remind" value="0" {$radio0}> 否 
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">祝福语:</label>
+						<div class="controls">
+							<textarea name="user_wish" cols="3" rows="3">{$user_wish}</textarea>
 						</div>
 					</div>
 				</fieldset>
