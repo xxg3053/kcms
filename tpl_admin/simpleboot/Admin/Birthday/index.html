@@ -38,8 +38,8 @@
 						<td>{$vo.user_tel}</td>
 						<td>{$status[$vo['user_remind']]}</td>
 						<td>
-							<a href="">修改</a>|
-							<a href="">删除</a>|
+							<a href="{:U('birthday/edit',array('id'=>$vo['id']))}">修改</a>|
+							<a href="{:U('birthday/delete',array('id'=>$vo['id']))}" class="J_ajax_del">删除</a>|
 							<a href="">发送邮件</a>
 						</td>
 					</tr>
