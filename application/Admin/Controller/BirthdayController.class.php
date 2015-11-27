@@ -89,7 +89,7 @@ class BirthdayController extends AdminbaseController{
 			$email = $birthdays[$i]['user_email'];
 			$solar = $birthdays[$i]['user_solar'];
 			$remind = $birthdays[$i]['user_remind'];
-			
+			$wish = $birthdays[$i]['user_wish'];
 			 $d = 0;
             if($solar==0){
                 $l=$lunar->convertSolarToLunar(date('Y'),date('m'),date('d'));
@@ -104,16 +104,16 @@ class BirthdayController extends AdminbaseController{
 			if($d > 0 && $d < 4){
 				//提醒好友
 				if($remind == 1){
-					sp_send_email($email,'KCMS系统生日提醒','亲爱的'.$name.'：您的生日快到了,还有'.$d.'天就到了哦！记住好好庆祝哦！');
+					sp_send_email($email,'KCMS系统生日提醒','亲爱的'.$name.'：您的生日快到了,还有'.$d.'天就到了哦！'.$wish);
 				}
 
 				$mainRemind .= '您的好友'.$name.'的生日快到了，还有'.$d.'天\n\n\n';
 			}elseif ($d == 0) {
 				//提醒好友
 				if($remind == 1){
-					sp_send_email($email,'KCMS系统生日提醒','亲爱的'.$name.'：您今天生日哦，赶紧HUPPY吧！！');
+					sp_send_email($email,'KCMS系统生日提醒','亲爱的'.$name.'：'.$wish);
 				}
-				$mainRemind .= '今天是您的好友'.$name.'的生日，发短信祝福吧！！\n\n\n';
+				$mainRemind .= '今天是您的好友'.$name.'的生日，提醒的祝福语'.$wish.'\n\n\n';
 			}
 		}
 		//提醒管理员
